@@ -26,6 +26,7 @@ export default function Navbar() {
     { name: "Tech Stack", id: "tech" },
     { name: "About", id: "about" },
     { name: "Career", id: "career" },
+    { name: "Book", id: "book" },
     { name: "Contact", id: "contact" },
   ];
 

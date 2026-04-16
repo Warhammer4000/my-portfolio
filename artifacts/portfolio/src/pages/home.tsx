@@ -4,6 +4,7 @@ import FeaturedProducts from "@/components/sections/featured-products";
 import TechStack from "@/components/sections/tech-stack";
 import About from "@/components/sections/about";
 import Career from "@/components/sections/career";
+import Publication from "@/components/sections/publication";
 import Impact from "@/components/sections/impact";
 import Contact from "@/components/sections/contact";
 import Navbar from "@/components/layout/navbar";
@@ -18,6 +19,7 @@ export default function Home() {
         <TechStack />
         <About />
         <Career />
+        <Publication />
         <Impact />
         <Contact />
       </main>
