@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Quote, ExternalLink } from "lucide-react";
+import { Quote, ExternalLink, Briefcase, Zap, Trophy } from "lucide-react";
+import { SiSteam } from "react-icons/si";
 import { Card, CardContent } from "@/components/ui/card";
 
 const recommendations = [
@@ -91,19 +92,28 @@ export default function Impact() {
         >
           <div className="inline-flex flex-wrap items-center justify-center gap-8 md:gap-12 py-8 px-8 md:px-16 rounded-2xl bg-secondary/30 border border-white/5 backdrop-blur-sm">
             <div className="text-center">
-              <div className="text-4xl font-bold text-foreground mb-2" data-testid="stat-products">6</div>
+              <div className="flex justify-center mb-2">
+                <Zap className="w-5 h-5" style={{ color: "#4285F4" }} />
+              </div>
+              <div className="text-4xl font-bold text-foreground mb-1" data-testid="stat-products">6</div>
               <div className="text-sm text-muted-foreground uppercase tracking-wider font-mono">AI Products Shipped</div>
               <div className="text-xs text-muted-foreground/60 font-mono mt-1">since 2025</div>
             </div>
-            <div className="w-px h-12 bg-white/10 hidden md:block" />
+            <div className="w-px h-16 bg-white/10 hidden md:block" />
             <div className="text-center">
-              <div className="text-4xl font-bold text-foreground mb-2" data-testid="stat-years">7+</div>
+              <div className="flex justify-center mb-2">
+                <Briefcase className="w-5 h-5 text-primary" />
+              </div>
+              <div className="text-4xl font-bold text-foreground mb-1" data-testid="stat-years">7+</div>
               <div className="text-sm text-muted-foreground uppercase tracking-wider font-mono">Years Engineering</div>
               <div className="text-xs text-muted-foreground/60 font-mono mt-1">at Brain Station 23</div>
             </div>
-            <div className="w-px h-12 bg-white/10 hidden md:block" />
+            <div className="w-px h-16 bg-white/10 hidden md:block" />
             <div className="text-center">
-              <div className="text-4xl font-bold text-foreground mb-2" data-testid="stat-steam">1st</div>
+              <div className="flex justify-center mb-2">
+                <SiSteam className="w-5 h-5" style={{ color: "#1999FF" }} />
+              </div>
+              <div className="text-4xl font-bold text-foreground mb-1" data-testid="stat-steam">1st</div>
               <div className="text-sm text-muted-foreground uppercase tracking-wider font-mono">Bangladeshi on Steam</div>
               <div className="text-xs text-muted-foreground/60 font-mono mt-1">game published</div>
             </div>

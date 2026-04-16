@@ -5,6 +5,7 @@ import TechStack from "@/components/sections/tech-stack";
 import About from "@/components/sections/about";
 import Career from "@/components/sections/career";
 import Games from "@/components/sections/games";
+import Extracurriculars from "@/components/sections/extracurriculars";
 import Publication from "@/components/sections/publication";
 import Impact from "@/components/sections/impact";
 import Contact from "@/components/sections/contact";
@@ -21,6 +22,7 @@ export default function Home() {
         <About />
         <Career />
         <Games />
+        <Extracurriculars />
         <Publication />
         <Impact />
         <Contact />
