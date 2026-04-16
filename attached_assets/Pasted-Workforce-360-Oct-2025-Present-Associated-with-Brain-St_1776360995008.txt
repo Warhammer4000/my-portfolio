@@ -1,0 +1,37 @@
+Workforce 360
+
+Oct 2025 – Present
+
+
+Associated with Brain Station 23
+
+Overview
+A multi-module HR and workforce management platform designed to centralize operations across employee data, planning, analytics, feedback, and administration. Built with a unified permission model and real-time data access.
+
+Key Modules
+Employee Profile & CV Database: Advanced directory with deep filtering (skills, experience, certifications, availability, billing). Includes CV generation with customizable templates, preview, and bulk export (PDF/DOCX).
+
+Resource Planning & Calendar: Workforce allocation with timelines, forecasting, and project assignment tracking (engagement, billing, release dates), supported by audit trails and utilization metrics.
+
+Reporting & Analytics: Workforce insights including timesheets, engagement, and organizational composition. Supports dashboards, pivot tables, and exports.
+
+Surveys & 360 Feedback: Survey builder with reusable templates, campaign management, analytics, and structured 360° review cycles.
+
+Performance (PIP): Configurable workflows for performance improvement tracking and evaluation.
+
+Bench Management: Non-billable employee tracking with feedback, analytics, and cost visibility.
+
+Food Planning: Meal scheduling, order aggregation, feedback, and operational analytics.
+
+Project Database: Central repository with search, documentation, team management, and AI-assisted content.
+
+Noticeboard: Internal communication system with announcements.
+
+Security & Admin
+Granular RBAC with module-level permissions and database-enforced access via Row-Level Security. Full audit logging. Admin tools include user lifecycle management, feature toggles, template editing, ERP integration, and system monitoring.
+
+Data & UX
+Supports bulk import/export (CSV, Excel, JSON) and document generation (PDF, DOCX, PPT). Includes validation with error reporting. Responsive UI, dark/light mode, drag-and-drop interactions, and accessible components.
+
+Quality & Tooling
+End-to-end TypeScript, ESLint, Zod, Vitest, SonarQube, and PostHog for analytics.
