@@ -1,7 +1,14 @@
 import React from "react";
 import { motion, type Variants } from "framer-motion";
-import { ExternalLink, Users, Gamepad2, Zap } from "lucide-react";
+import { ExternalLink, Users, Gamepad2, Zap, Cpu, Brain, Sparkles, GraduationCap, Trophy } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+
+interface PlaceholderTheme {
+  gradient: string;
+  centerIcon: React.ReactNode;
+  microIcons: React.ReactNode[];
+  label: string;
+}
 
 interface Event {
   id: number;
@@ -12,6 +19,7 @@ interface Event {
   description: string;
   url: string;
   thumbnail: string | null;
+  placeholder?: PlaceholderTheme;
 }
 
 const events: Event[] = [
@@ -24,6 +32,16 @@ const events: Event[] = [
     description: "Organized and hosted the AI Engineering Hackathon in partnership with Poridhi — Bangladesh's largest AI-focused learning platform. Brought together developers to build AI-powered solutions under time pressure.",
     url: "https://poridhi.io/hackathon",
     thumbnail: null,
+    placeholder: {
+      gradient: "from-blue-950 via-slate-900 to-background",
+      centerIcon: <Cpu className="w-9 h-9 text-blue-300/80" />,
+      microIcons: [
+        <Sparkles className="w-5 h-5 text-blue-400/40" />,
+        <Brain className="w-4 h-4 text-indigo-400/35" />,
+        <Zap className="w-4 h-4 text-cyan-400/30" />,
+      ],
+      label: "AI Engineering Hackathon",
+    },
   },
   {
     id: 2,
@@ -34,6 +52,16 @@ const events: Event[] = [
     description: "Co-organized Learnathon — a flagship tech learning competition and hackathon run by Geeky Solutions, bringing together Bangladesh's brightest developers to learn and build.",
     url: "https://learnathon.geeky.solutions/",
     thumbnail: null,
+    placeholder: {
+      gradient: "from-amber-950 via-slate-900 to-background",
+      centerIcon: <GraduationCap className="w-9 h-9 text-amber-300/80" />,
+      microIcons: [
+        <Trophy className="w-5 h-5 text-amber-400/40" />,
+        <Zap className="w-4 h-4 text-orange-400/35" />,
+        <Users className="w-4 h-4 text-amber-300/30" />,
+      ],
+      label: "Learning Competition",
+    },
   },
   {
     id: 3,
@@ -127,11 +155,24 @@ export default function Extracurriculars() {
                       loading="lazy"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-primary/15 via-secondary/50 to-background flex items-center justify-center">
-                      {event.type === "Hackathon"
-                        ? <Zap className="w-10 h-10 text-primary/25" />
-                        : <Gamepad2 className="w-10 h-10 text-primary/25" />
-                      }
+                    <div className={`w-full h-full bg-gradient-to-br ${event.placeholder?.gradient ?? "from-primary/15 via-secondary/50 to-background"} flex items-center justify-center relative overflow-hidden`}>
+                      {/* dot grid */}
+                      <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+                      {event.placeholder?.label && (
+                        <span className="absolute top-3 left-3 text-[9px] font-mono tracking-widest uppercase text-white/25 z-10">
+                          {event.placeholder.label}
+                        </span>
+                      )}
+                      {event.placeholder?.microIcons[0] && <div className="absolute top-4 right-4 z-10">{event.placeholder.microIcons[0]}</div>}
+                      {event.placeholder?.microIcons[1] && <div className="absolute bottom-8 left-4 z-10">{event.placeholder.microIcons[1]}</div>}
+                      {event.placeholder?.microIcons[2] && <div className="absolute top-1/2 right-8 -translate-y-1/2 z-10">{event.placeholder.microIcons[2]}</div>}
+                      <div className="relative z-10 p-4 rounded-2xl bg-white/5 border border-white/8 backdrop-blur-sm">
+                        {event.placeholder?.centerIcon ?? (
+                          event.type === "Hackathon"
+                            ? <Zap className="w-9 h-9 text-primary/50" />
+                            : <Gamepad2 className="w-9 h-9 text-primary/50" />
+                        )}
+                      </div>
                     </div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

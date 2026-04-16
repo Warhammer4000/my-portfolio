@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, type Variants } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Keyboard, Braces, Code2 } from "lucide-react";
 import { SiSteam, SiItchdotio } from "react-icons/si";
 import { BsXbox, BsWindows } from "react-icons/bs";
 
@@ -169,8 +169,15 @@ export default function Games() {
                       loading="lazy"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-primary/20 via-secondary/40 to-background flex items-center justify-center">
-                      <SiItchdotio className="w-10 h-10 text-primary/30" />
+                    <div className="w-full h-full bg-gradient-to-br from-orange-950 via-slate-900 to-background flex items-center justify-center relative overflow-hidden">
+                      {/* dot grid */}
+                      <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+                      <span className="absolute top-3 left-3 text-[9px] font-mono tracking-widest uppercase text-white/25">Typing Game · itch.io</span>
+                      <Braces className="absolute top-4 right-4 w-4 h-4 text-orange-400/35" />
+                      <Code2 className="absolute bottom-8 left-4 w-4 h-4 text-amber-400/30" />
+                      <div className="relative z-10 p-4 rounded-2xl bg-white/5 border border-white/8 backdrop-blur-sm">
+                        <Keyboard className="w-9 h-9 text-orange-300/80" />
+                      </div>
                     </div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

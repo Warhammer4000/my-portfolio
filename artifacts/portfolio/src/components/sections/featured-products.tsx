@@ -5,7 +5,8 @@ import {
   SiGooglegemini, SiSonar, SiDocker, SiGit, SiPypi, SiDart,
   SiZod, SiTrivy,
 } from "react-icons/si";
-import { Zap, ExternalLink, Mic, ShieldCheck, BarChart2, Users, FileAudio, ClipboardList } from "lucide-react";
+import { Zap, ExternalLink, Mic, ShieldCheck, BarChart2, Users, FileAudio, ClipboardList,
+  Network, Database, Layers, TerminalSquare, Shield, GitBranch, Code2 } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import type { IconType } from "react-icons";
 import type { ReactNode } from "react";
@@ -69,6 +70,13 @@ function TechIcon({ name }: { name: string }) {
 }
 
 /* ── Product data ───────────────────────────────────────────── */
+interface PlaceholderTheme {
+  gradient: string;
+  centerIcon: ReactNode;
+  microIcons: ReactNode[];
+  label: string;
+}
+
 interface Product {
   id: number;
   name: string;
@@ -79,6 +87,7 @@ interface Product {
   icon: ReactNode;
   link: string | null;
   thumbnail: string | null;
+  placeholder?: PlaceholderTheme;
 }
 
 const products: Product[] = [
@@ -92,6 +101,16 @@ const products: Product[] = [
     icon: <Users className="w-5 h-5 text-primary" />,
     link: null,
     thumbnail: null,
+    placeholder: {
+      gradient: "from-indigo-950 via-slate-900 to-background",
+      centerIcon: <Users className="w-9 h-9 text-indigo-300/80" />,
+      microIcons: [
+        <Network className="w-5 h-5 text-indigo-400/40" />,
+        <Database className="w-4 h-4 text-blue-400/40" />,
+        <Layers className="w-4 h-4 text-indigo-300/30" />,
+      ],
+      label: "HR Platform · AI-Assisted",
+    },
   },
   {
     id: 2,
@@ -114,6 +133,16 @@ const products: Product[] = [
     icon: <ShieldCheck className="w-5 h-5 text-primary" />,
     link: "https://pypi.org/project/code-audit-23/",
     thumbnail: null,
+    placeholder: {
+      gradient: "from-emerald-950 via-slate-900 to-background",
+      centerIcon: <TerminalSquare className="w-9 h-9 text-emerald-300/80" />,
+      microIcons: [
+        <Shield className="w-5 h-5 text-emerald-400/40" />,
+        <GitBranch className="w-4 h-4 text-teal-400/40" />,
+        <Code2 className="w-4 h-4 text-emerald-300/30" />,
+      ],
+      label: "CLI Tool · Security Scanning",
+    },
   },
   {
     id: 4,
@@ -179,9 +208,25 @@ function Thumbnail({ product }: { product: Product }) {
       </div>
     );
   }
+  const ph = product.placeholder;
   return (
-    <div className="relative w-full aspect-video overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/40 to-background/80 shrink-0 flex items-center justify-center">
-      <div className="opacity-20 scale-150">{product.icon}</div>
+    <div className={`relative w-full aspect-video overflow-hidden shrink-0 bg-gradient-to-br ${ph?.gradient ?? "from-primary/10 via-secondary/40 to-background/80"} flex items-center justify-center`}>
+      {/* dot grid */}
+      <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+      {/* label */}
+      {ph?.label && (
+        <span className="absolute top-3 left-3 text-[9px] font-mono tracking-widest uppercase text-white/30 z-10">
+          {ph.label}
+        </span>
+      )}
+      {/* floating micro icons */}
+      {ph?.microIcons[0] && <div className="absolute top-4 right-4 z-10">{ph.microIcons[0]}</div>}
+      {ph?.microIcons[1] && <div className="absolute bottom-8 left-4 z-10">{ph.microIcons[1]}</div>}
+      {ph?.microIcons[2] && <div className="absolute top-1/2 right-8 -translate-y-1/2 z-10">{ph.microIcons[2]}</div>}
+      {/* center icon */}
+      <div className="relative z-10 p-4 rounded-2xl bg-white/5 border border-white/8 backdrop-blur-sm">
+        {ph?.centerIcon ?? <div className="opacity-20 scale-150">{product.icon}</div>}
+      </div>
       <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent" />
     </div>
   );
