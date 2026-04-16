@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Quote, ExternalLink, Briefcase, Zap, Trophy } from "lucide-react";
+import { Quote, Briefcase, Zap, Trophy } from "lucide-react";
 import { SiSteam } from "react-icons/si";
+import { BsLinkedin } from "react-icons/bs";
 import { Card, CardContent } from "@/components/ui/card";
 
 const recommendations = [
@@ -75,7 +76,7 @@ export default function Impact() {
                       className="text-muted-foreground hover:text-primary transition-colors shrink-0 mt-0.5"
                       aria-label={`${item.author} on LinkedIn`}
                     >
-                      <ExternalLink className="w-4 h-4" />
+                      <BsLinkedin className="w-4 h-4" />
                     </a>
                   </div>
                 </CardContent>
