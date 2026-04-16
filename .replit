@@ -3,7 +3,7 @@ modules = ["nodejs-24"]
 [deployment]
 router = "application"
 deploymentTarget = "static"
-publicDir = "."
+publicDir = "artifacts/portfolio"
 
 [deployment.postBuild]
 args = ["pnpm", "store", "prune"]
