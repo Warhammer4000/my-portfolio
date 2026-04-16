@@ -9,21 +9,30 @@ import {
   SiDocker,
   SiGit,
   SiGooglegemini,
+  SiSonar,
 } from "react-icons/si";
+import type { IconType } from "react-icons";
 
-const techStack = [
+interface TechItem {
+  name: string;
+  category: string;
+  icon?: IconType;
+  imgSrc?: string;
+  letter?: string;
+}
+
+const techStack: TechItem[] = [
   { name: "Gemini AI", category: "Intelligence", icon: SiGooglegemini },
-  { name: "Lovable", category: "AI-Powered Dev", icon: null, letter: "L" },
+  { name: "Lovable", category: "AI-Powered Dev", imgSrc: "https://lovable.dev/favicon.ico" },
   { name: "Supabase", category: "Database / Backend", icon: SiSupabase },
   { name: "React", category: "Frontend", icon: SiReact },
   { name: "TypeScript", category: "Fullstack", icon: SiTypescript },
   { name: "Flutter", category: "Mobile", icon: SiFlutter },
   { name: "Python", category: "Backend / Tooling", icon: SiPython },
-  { name: "SonarQube", category: "Code Quality", icon: null, letter: "S" },
+  { name: "SonarQube", category: "Code Quality", icon: SiSonar },
   { name: "Docker", category: "Deployment", icon: SiDocker },
   { name: "Git", category: "Version Control", icon: SiGit },
-  { name: "Agentic AI", category: "Architecture", icon: null, letter: "A" },
-  { name: "Vibe Coding", category: "Methodology", icon: null, letter: "V" },
+  { name: "Kiro", category: "Agentic IDE", imgSrc: "https://kiro.dev/favicon.ico" },
 ];
 
 export default function TechStack() {
@@ -54,6 +63,13 @@ export default function TechStack() {
             >
               {tech.icon ? (
                 <tech.icon className="w-5 h-5 text-muted-foreground" />
+              ) : tech.imgSrc ? (
+                <img
+                  src={tech.imgSrc}
+                  alt={tech.name}
+                  className="w-5 h-5 object-contain opacity-70"
+                  loading="lazy"
+                />
               ) : (
                 <div className="w-5 h-5 rounded-md bg-primary/20 flex items-center justify-center text-[11px] font-bold text-primary">
                   {tech.letter}

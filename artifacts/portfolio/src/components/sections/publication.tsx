@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { BookOpen, ExternalLink, Users } from "lucide-react";
+import { ExternalLink, Users } from "lucide-react";
 
 export default function Publication() {
   return (
@@ -31,10 +31,15 @@ export default function Publication() {
             <div className="absolute top-0 right-0 h-full w-64 bg-gradient-to-l from-primary/5 to-transparent pointer-events-none" />
 
             <div className="flex flex-col md:flex-row gap-8 items-start">
-              {/* Book icon / cover placeholder */}
+              {/* Book cover */}
               <div className="shrink-0">
-                <div className="w-28 h-36 rounded-lg bg-gradient-to-br from-primary/30 to-primary/5 border border-primary/20 flex items-center justify-center shadow-[0_0_30px_hsl(var(--primary)/0.1)]">
-                  <BookOpen className="w-10 h-10 text-primary/70" />
+                <div className="w-28 h-36 rounded-lg overflow-hidden border border-white/10 shadow-[0_0_30px_hsl(var(--primary)/0.1)] bg-secondary/50">
+                  <img
+                    src="https://media.springernature.com/w306/springer-static/cover-hires/book/978-1-4842-6917-6"
+                    alt="How to Make a Game — Apress book cover"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
               </div>
 
