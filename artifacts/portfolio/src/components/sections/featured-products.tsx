@@ -1,10 +1,74 @@
 import React from "react";
 import { motion, type Variants } from "framer-motion";
-import { ExternalLink, Mic, ShieldCheck, BarChart2, Users, FileAudio, ClipboardList } from "lucide-react";
+import {
+  SiSupabase, SiReact, SiTypescript, SiFlutter, SiPython,
+  SiGooglegemini, SiSonar, SiDocker, SiGit, SiPypi, SiDart,
+  SiZod, SiTrivy,
+} from "react-icons/si";
+import { Zap, ExternalLink, Mic, ShieldCheck, BarChart2, Users, FileAudio, ClipboardList } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import type { IconType } from "react-icons";
 import type { ReactNode } from "react";
 
+/* ── Tech icon registry ─────────────────────────────────────── */
+type TechDef =
+  | { kind: "si"; Icon: IconType; color: string }
+  | { kind: "img"; src: string }
+  | { kind: "lucide"; node: ReactNode }
+  | { kind: "letter"; letter: string; color: string };
+
+const techRegistry: Record<string, TechDef> = {
+  "Gemini AI":     { kind: "si",     Icon: SiGooglegemini, color: "#4285F4" },
+  "Lovable":       { kind: "img",    src: "https://lovable.dev/favicon.ico" },
+  "Supabase":      { kind: "si",     Icon: SiSupabase,     color: "#3ECF8E" },
+  "React":         { kind: "si",     Icon: SiReact,        color: "#61DAFB" },
+  "React.js":      { kind: "si",     Icon: SiReact,        color: "#61DAFB" },
+  "TypeScript":    { kind: "si",     Icon: SiTypescript,   color: "#3178C6" },
+  "Zod":           { kind: "si",     Icon: SiZod,          color: "#3E67B1" },
+  "Flutter":       { kind: "si",     Icon: SiFlutter,      color: "#54C5F8" },
+  "Dart":          { kind: "si",     Icon: SiDart,         color: "#00B4D8" },
+  "Python":        { kind: "si",     Icon: SiPython,       color: "#FFD43B" },
+  "PyPI":          { kind: "si",     Icon: SiPypi,         color: "#3775A9" },
+  "SonarQube":     { kind: "si",     Icon: SiSonar,        color: "#CB2029" },
+  "Semgrep":       { kind: "letter", letter: "S",          color: "#FC6D26" },
+  "Trivy":         { kind: "si",     Icon: SiTrivy,        color: "#1904DA" },
+  "Docker":        { kind: "si",     Icon: SiDocker,       color: "#2496ED" },
+  "Git":           { kind: "si",     Icon: SiGit,          color: "#F05032" },
+  "Realtime":      { kind: "lucide", node: <Zap className="w-4 h-4" style={{ color: "#3ECF8E" }} /> },
+  "Vibe Coding":   { kind: "letter", letter: "V",          color: "#a855f7" },
+};
+
+function TechIcon({ name }: { name: string }) {
+  const def = techRegistry[name];
+  if (!def) return (
+    <span title={name} className="flex items-center justify-center w-7 h-7 rounded-md bg-white/5 border border-white/10 text-[9px] font-bold text-muted-foreground uppercase">
+      {name.slice(0, 2)}
+    </span>
+  );
+
+  const wrapper = "flex items-center justify-center w-7 h-7 rounded-md bg-white/5 border border-white/8 hover:border-white/20 hover:bg-white/8 transition-colors cursor-default";
+
+  if (def.kind === "si") return (
+    <span title={name} className={wrapper}>
+      <def.Icon className="w-4 h-4" style={{ color: def.color }} />
+    </span>
+  );
+  if (def.kind === "img") return (
+    <span title={name} className={wrapper}>
+      <img src={def.src} alt={name} className="w-4 h-4 object-contain" loading="lazy" />
+    </span>
+  );
+  if (def.kind === "lucide") return (
+    <span title={name} className={wrapper}>{def.node}</span>
+  );
+  return (
+    <span title={name} className={wrapper}>
+      <span className="text-[10px] font-bold" style={{ color: def.color }}>{def.letter}</span>
+    </span>
+  );
+}
+
+/* ── Product data ───────────────────────────────────────────── */
 interface Product {
   id: number;
   name: string;
@@ -86,16 +150,17 @@ const products: Product[] = [
   }
 ];
 
+/* ── Animation variants ─────────────────────────────────────── */
 const container: Variants = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.1 } }
 };
-
 const item: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } }
 };
 
+/* ── Thumbnail ──────────────────────────────────────────────── */
 function Thumbnail({ product }: { product: Product }) {
   if (product.thumbnail) {
     return (
@@ -122,6 +187,7 @@ function Thumbnail({ product }: { product: Product }) {
   );
 }
 
+/* ── Section ────────────────────────────────────────────────── */
 export default function FeaturedProducts() {
   return (
     <section id="products" className="py-24 relative bg-card/50 border-y border-white/5">
@@ -163,9 +229,9 @@ export default function FeaturedProducts() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2 shrink-0 ml-2">
-                      <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20 text-xs hidden sm:flex">
+                      <span className="hidden sm:inline-block text-xs font-mono text-primary bg-primary/10 border border-primary/20 rounded-full px-2.5 py-0.5">
                         {product.outcome}
-                      </Badge>
+                      </span>
                       {product.link && (
                         <a
                           href={product.link}
@@ -181,17 +247,15 @@ export default function FeaturedProducts() {
                     </div>
                   </div>
 
-                  <CardContent className="flex-1 p-0 mb-3">
+                  <CardContent className="flex-1 p-0 mb-4">
                     <CardDescription className="text-sm text-muted-foreground leading-relaxed">
                       {product.description}
                     </CardDescription>
                   </CardContent>
 
-                  <CardFooter className="flex flex-wrap gap-2 p-0">
+                  <CardFooter className="flex flex-wrap gap-1.5 p-0">
                     {product.tech.map((t) => (
-                      <Badge key={t} variant="secondary" className="text-xs bg-white/5 border-white/10 text-muted-foreground">
-                        {t}
-                      </Badge>
+                      <TechIcon key={t} name={t} />
                     ))}
                   </CardFooter>
                 </div>
