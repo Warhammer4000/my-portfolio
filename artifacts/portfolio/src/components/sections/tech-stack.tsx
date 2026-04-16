@@ -17,22 +17,23 @@ interface TechItem {
   name: string;
   category: string;
   icon?: IconType;
+  iconColor?: string;
   imgSrc?: string;
   letter?: string;
 }
 
 const techStack: TechItem[] = [
-  { name: "Gemini AI", category: "Intelligence", icon: SiGooglegemini },
-  { name: "Lovable", category: "AI-Powered Dev", imgSrc: "https://lovable.dev/favicon.ico" },
-  { name: "Supabase", category: "Database / Backend", icon: SiSupabase },
-  { name: "React", category: "Frontend", icon: SiReact },
-  { name: "TypeScript", category: "Fullstack", icon: SiTypescript },
-  { name: "Flutter", category: "Mobile", icon: SiFlutter },
-  { name: "Python", category: "Backend / Tooling", icon: SiPython },
-  { name: "SonarQube", category: "Code Quality", icon: SiSonar },
-  { name: "Docker", category: "Deployment", icon: SiDocker },
-  { name: "Git", category: "Version Control", icon: SiGit },
-  { name: "Kiro", category: "Agentic IDE", imgSrc: "https://kiro.dev/favicon.ico" },
+  { name: "Gemini AI",   category: "Intelligence",        icon: SiGooglegemini, iconColor: "#4285F4" },
+  { name: "Lovable",     category: "AI-Powered Dev",      imgSrc: "https://lovable.dev/favicon.ico" },
+  { name: "Supabase",    category: "Database / Backend",  icon: SiSupabase,     iconColor: "#3ECF8E" },
+  { name: "React",       category: "Frontend",            icon: SiReact,        iconColor: "#61DAFB" },
+  { name: "TypeScript",  category: "Fullstack",           icon: SiTypescript,   iconColor: "#3178C6" },
+  { name: "Flutter",     category: "Mobile",              icon: SiFlutter,      iconColor: "#54C5F8" },
+  { name: "Python",      category: "Backend / Tooling",   icon: SiPython,       iconColor: "#FFD43B" },
+  { name: "SonarQube",   category: "Code Quality",        icon: SiSonar,        iconColor: "#CB2029" },
+  { name: "Docker",      category: "Deployment",          icon: SiDocker,       iconColor: "#2496ED" },
+  { name: "Git",         category: "Version Control",     icon: SiGit,          iconColor: "#F05032" },
+  { name: "Kiro",        category: "Agentic IDE",         imgSrc: "https://kiro.dev/favicon.ico" },
 ];
 
 export default function TechStack() {
@@ -62,12 +63,12 @@ export default function TechStack() {
               data-testid={`tech-item-${i}`}
             >
               {tech.icon ? (
-                <tech.icon className="w-5 h-5 text-muted-foreground" />
+                <tech.icon className="w-5 h-5 shrink-0" style={{ color: tech.iconColor }} />
               ) : tech.imgSrc ? (
                 <img
                   src={tech.imgSrc}
                   alt={tech.name}
-                  className="w-5 h-5 object-contain opacity-70"
+                  className="w-5 h-5 object-contain"
                   loading="lazy"
                 />
               ) : (
