@@ -23,9 +23,9 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Products", id: "products" },
-    { name: "Tech Stack", id: "tech" },
     { name: "About", id: "about" },
     { name: "Career", id: "career" },
+    { name: "Games", id: "games" },
     { name: "Book", id: "book" },
     { name: "Contact", id: "contact" },
   ];
@@ -46,7 +46,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <button
               key={link.name}
@@ -56,6 +56,14 @@ export default function Navbar() {
               {link.name}
             </button>
           ))}
+          <a
+            href="https://2takardeveloper.medium.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Blog
+          </a>
           <Button 
             variant="default" 
             size="sm"
@@ -84,6 +92,14 @@ export default function Navbar() {
                     {link.name}
                   </button>
                 ))}
+                <a
+                  href="https://2takardeveloper.medium.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-left text-lg font-medium text-muted-foreground hover:text-foreground"
+                >
+                  Blog
+                </a>
                 <div className="pt-6 border-t border-white/10">
                   <Button 
                     className="w-full" 

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
+import { Quote, ExternalLink } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const recommendations = [
@@ -8,25 +8,29 @@ const recommendations = [
     id: 1,
     quote: "Tanim was introduced to me back in 2016 by the name of '2 Takar Developer'. We have come a long way. His knowledge about game development and AR/VR is PRICELESS. To my knowledge, he is the first Bangladeshi who has a released game on STEAM.",
     author: "B M Mohaiminul Islam Rahul",
-    role: "Product Manager · Brain Station 23"
+    role: "Deputy Manager, Product · Furnish Ltd",
+    linkedin: "https://www.linkedin.com/in/rahulrx18/"
   },
   {
     id: 2,
     quote: "Tanimul Haque Khan is one of the talented and hard-working engineers. He is very keen to learn new things and keep his skill set updated. He is very motivational and a very responsible person at the workplace.",
     author: "Shahidul Islam",
-    role: "ML & MLOps Expert · AI Systems Engineer"
+    role: "SQA Engineer · Brain Station 23",
+    linkedin: "https://www.linkedin.com/in/sshahidulislam/"
   },
   {
     id: 3,
     quote: "One of my topmost students. Possesses an outstanding level of rational ability and utmost sincerity.",
     author: "Shovra Das",
-    role: "Software Developer · Former Teacher at AIUB"
+    role: "Software Developer · Former Lecturer, AIUB",
+    linkedin: "https://www.linkedin.com/in/shovradas/"
   },
   {
     id: 4,
     quote: "He was one of the best students with academic knowledge and extraordinary academic results. A passionate game developer with a team-leading and managing skill.",
     author: "Saumya Shovan Roy",
-    role: "Lead Software Engineer · Cloud, Security & AI"
+    role: "Lead Software Engineer · Cloud & Security",
+    linkedin: "https://www.linkedin.com/in/saumyashovanroy/"
   }
 ];
 
@@ -58,9 +62,20 @@ export default function Impact() {
                   <p className="text-base text-muted-foreground italic mb-5 relative z-10 leading-relaxed">
                     "{item.quote}"
                   </p>
-                  <div className="border-t border-white/5 pt-4">
-                    <div className="font-semibold text-foreground text-sm">{item.author}</div>
-                    <div className="text-xs text-primary font-mono mt-0.5">{item.role}</div>
+                  <div className="border-t border-white/5 pt-4 flex items-start justify-between gap-3">
+                    <div>
+                      <div className="font-semibold text-foreground text-sm">{item.author}</div>
+                      <div className="text-xs text-primary font-mono mt-0.5">{item.role}</div>
+                    </div>
+                    <a
+                      href={item.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors shrink-0 mt-0.5"
+                      aria-label={`${item.author} on LinkedIn`}
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
                   </div>
                 </CardContent>
               </Card>

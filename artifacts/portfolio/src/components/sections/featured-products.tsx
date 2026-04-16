@@ -12,7 +12,8 @@ const products = [
     description: "A multi-module HR and workforce management platform built to centralize employee data, resource planning, analytics, and 360° feedback. Features AI-assisted project documentation, granular RBAC, and real-time workforce insights across the organization.",
     tech: ["Lovable", "Supabase", "React", "TypeScript", "Zod"],
     outcome: "Entire HR ops centralized",
-    icon: <Users className="w-5 h-5 text-primary" />
+    icon: <Users className="w-5 h-5 text-primary" />,
+    link: null,
   },
   {
     id: 2,
@@ -21,7 +22,8 @@ const products = [
     description: "Automated Bangla meeting transcription powered by Google Gemini. Eliminated a daily manual workflow of uploading audio, copying, and formatting. Your audio is processed through your own Gemini API key — costs stay near zero, data stays yours.",
     tech: ["Gemini AI", "Lovable", "Supabase", "React"],
     outcome: "Daily manual workflow eliminated",
-    icon: <Mic className="w-5 h-5 text-primary" />
+    icon: <Mic className="w-5 h-5 text-primary" />,
+    link: "https://banglascribe.online/",
   },
   {
     id: 3,
@@ -30,7 +32,8 @@ const products = [
     description: "A unified CLI tool that combines SonarQube, Semgrep, and Trivy into a single command. Standardises code quality and security scanning across all projects with SARIF output and an interactive menu — no per-project setup required.",
     tech: ["Python", "PyPI", "SonarQube", "Semgrep", "Trivy"],
     outcome: "Security scanning unified company-wide",
-    icon: <ShieldCheck className="w-5 h-5 text-primary" />
+    icon: <ShieldCheck className="w-5 h-5 text-primary" />,
+    link: "https://pypi.org/project/code-audit-23/",
   },
   {
     id: 4,
@@ -39,7 +42,8 @@ const products = [
     description: "A free, open-source alternative to Mentimeter. Run live polls, word clouds, Q&A, quizzes, ratings, and rankings during presentations with real-time audience responses, beautiful visualizations, and full session analytics — fully self-hosted.",
     tech: ["Lovable", "Supabase", "React", "Realtime"],
     outcome: "Zero vendor lock-in, free forever",
-    icon: <BarChart2 className="w-5 h-5 text-primary" />
+    icon: <BarChart2 className="w-5 h-5 text-primary" />,
+    link: "https://github.com/Warhammer4000/pulse-live",
   },
   {
     id: 5,
@@ -48,7 +52,8 @@ const products = [
     description: "A Flutter app for audio recording and AI-powered summarization using Google Gemini. Single-tap recording for meetings, lectures, and interviews. Supports importing existing audio, Bangla language, and one-tap export of summaries to email, chat, or documents.",
     tech: ["Flutter", "Gemini AI", "Dart"],
     outcome: "Instant AI summaries from any audio",
-    icon: <FileAudio className="w-5 h-5 text-primary" />
+    icon: <FileAudio className="w-5 h-5 text-primary" />,
+    link: "https://play.google.com/store/apps/details?id=com.brainstation23.vocario&hl=en_US&pli=1",
   },
   {
     id: 6,
@@ -57,7 +62,8 @@ const products = [
     description: "A self-hosted employee feedback platform for HR teams. Features a survey builder with reusable templates, campaign management, analytics, and structured 360° review cycles — all within the company's own infrastructure for full data sovereignty.",
     tech: ["React.js", "Supabase", "Vibe Coding"],
     outcome: "Employee feedback stays internal",
-    icon: <ClipboardList className="w-5 h-5 text-primary" />
+    icon: <ClipboardList className="w-5 h-5 text-primary" />,
+    link: "https://openpulsesurvey.com/",
   }
 ];
 
@@ -111,7 +117,21 @@ export default function FeaturedProducts() {
                     <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors" data-testid={`product-title-${product.id}`}>
                       {product.name}
                     </CardTitle>
-                    <span className="text-xs font-mono text-muted-foreground whitespace-nowrap shrink-0">{product.date}</span>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="text-xs font-mono text-muted-foreground whitespace-nowrap">{product.date}</span>
+                      {product.link && (
+                        <a
+                          href={product.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-primary transition-colors"
+                          aria-label={`View ${product.name}`}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </CardHeader>
                 <CardContent className="flex-1">

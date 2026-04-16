@@ -30,6 +30,20 @@ export default function About() {
             <p>
               I believe AI engineering is about judgment, not just APIs. Knowing when to build, when to automate, and how to ship something colleagues actually rely on.
             </p>
+            <p className="text-muted-foreground text-lg md:text-xl">
+              Earlier in my career I led Brain Station 23's AR/VR and XR practice — delivering B2B immersive experiences for international clients across training, simulation, and enterprise use cases. That work shaped how I think about emerging technology: prove it with a real product, not a proof of concept.
+            </p>
+          </div>
+
+          <div className="mt-8 pt-8 border-t border-white/5 flex flex-wrap gap-4 text-sm font-mono">
+            <a
+              href="https://2takardeveloper.medium.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary/80 transition-colors underline underline-offset-4"
+            >
+              Read my blog on Medium →
+            </a>
           </div>
         </motion.div>
       </div>
